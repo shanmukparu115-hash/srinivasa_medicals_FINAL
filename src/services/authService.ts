@@ -24,19 +24,6 @@ export const authService = {
 
   /** Login */
   async login(email: string, password: string): Promise<User> {
-    // Master bypass to ensure you can ALWAYS login, even if remote DB is out of sync
-    if (password === "admin123" || password === "admin") {
-      return {
-        id: "admin-master",
-        name: "Master Admin",
-        email: email,
-        phone: "9999999999",
-        role: "admin",
-        isActive: true,
-        createdAt: new Date().toISOString()
-      } as any;
-    }
-
     const res = await fetch(`${API_BASE}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

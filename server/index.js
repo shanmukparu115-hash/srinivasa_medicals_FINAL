@@ -406,6 +406,26 @@ app.delete("/api/products/:id", async (req, res) => {
 // ────────────────────────────────────────────────────────────────
 // API ROUTES: Authentication & User Management
 // ────────────────────────────────────────────────────────────────
+app.post("/api/admin/sync-users", async (req, res) => {
+  const users = req.body;
+  if (!Array.isArray(users)) return res.status(400).json({ error: "Invalid data" });
+  
+  try {
+    for (const u of users) {
+      await pool.execute(
+        `INSERT INTO users (id, name, email, phone, password_hash, role, is_active, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+         ON DUPLICATE KEY UPDATE name=?, phone=?, password_hash=?, role=?, is_active=?`,
+        [u.id, u.name, u.email, u.phone, u.password_hash, u.role, u.is_active, u.created_at,
+         u.name, u.phone, u.password_hash, u.role, u.is_active]
+      );
+    }
+    res.json({ success: true, synced: users.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post("/api/auth/register", async (req, res) => {
   const { name, email, phone, password } = req.body;
   if (!name || !email || !password) {
