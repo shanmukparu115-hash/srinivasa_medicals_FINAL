@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MessageSquare, Trash2, Mail, MailOpen } from "lucide-react";
+import { MessageSquare, Mail, MailOpen } from "lucide-react";
 import toast from "react-hot-toast";
 import { contactService } from "../../services/contactService";
 import type { ContactMessage } from "../../services/contactService";
