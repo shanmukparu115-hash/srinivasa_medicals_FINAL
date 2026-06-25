@@ -5,11 +5,11 @@
 --              and future-ready tables for scalability.
 -- ================================================================
 
-CREATE DATABASE IF NOT EXISTS srinivasa_medicals
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
+-- CREATE DATABASE IF NOT EXISTS srinivasa_medicals
+--   CHARACTER SET utf8mb4
+--   COLLATE utf8mb4_unicode_ci;
 
-USE srinivasa_medicals;
+-- USE srinivasa_medicals;
 
 DROP TABLE IF EXISTS order_items;
 DROP TABLE IF EXISTS cart_items;
