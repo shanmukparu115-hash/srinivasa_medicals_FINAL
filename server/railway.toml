@@ -1,0 +1,10 @@
+# ================================================================
+# railway.toml — Railway deployment config for Sri Srinivasa Medicals API
+# ================================================================
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "node index.js"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(100% 0 0);
+    --foreground: oklch(20% .04 240);
+    
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(20% .04 240);
+    
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(20% .04 240);
+    
+    --primary: oklch(55% .17 235);
+    --primary-foreground: oklch(99% .005 220);
+    --ring: oklch(55% .17 235);
+    
+    --secondary: oklch(94% .04 165);
+    --secondary-foreground: oklch(30% .1 165);
+    
+    --muted: oklch(96% .01 230);
+    --muted-foreground: oklch(50% .03 240);
+    
+    --accent: oklch(96% .01 230);
+    --accent-foreground: oklch(20% .04 240);
+    
+    --destructive: oklch(60% .22 25);
+    --destructive-foreground: oklch(99% 0 0);
+    
+    --success: oklch(62% .16 160);
+    --success-foreground: oklch(99% .005 220);
+    
+    --warning: oklch(78% .16 75);
+    --warning-foreground: oklch(25% .06 60);
+    
+    --border: oklch(92% .01 230);
+    --input: oklch(92% .01 230);
+    
+    --radius: 0.75rem;
+    --radius-3xl: 1.5rem;
+    
+    --gradient-hero: linear-gradient(135deg, oklch(55% .17 235) 0%, oklch(62% .16 200) 50%, oklch(62% .16 160) 100%);
+    --gradient-soft: linear-gradient(180deg, oklch(98% .02 220) 0%, oklch(96% .03 165) 100%);
+    
+    --shadow-card: 0 1px 2px oklch(55% .17 235 / 0.04), 0 4px 16px oklch(55% .17 235 / 0.06);
+    --shadow-elevated: 0 10px 40px -10px oklch(55% .17 235 / 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom UI adjustments to match target site closely */
+.backdrop-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Accordion keyframe animations */
+@keyframes slideDown {
+  from { height: 0; }
+  to { height: var(--radix-collapsible-content-height); }
+}
+
+@keyframes slideUp {
+  from { height: var(--radix-collapsible-content-height); }
+  to { height: 0; }
+}
+
+.animate-accordion-down {
+  animation: slideDown 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.animate-accordion-up {
+  animation: slideUp 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
