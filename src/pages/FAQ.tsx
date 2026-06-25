@@ -9,36 +9,36 @@ interface FAQItem {
 export const FAQ: React.FC = () => {
   const faqData: FAQItem[] = [
     { 
-      q: "How do I order prescription medicines?", 
-      a: "Upload a clear photo or PDF of your doctor's prescription on the Upload Rx page. Our licensed pharmacist will call you within 30 minutes to verify and confirm pricing." 
+      q: "Can I buy medicines directly from the website?", 
+      a: "Currently, our website is designed to help you browse our catalogue and check medicine availability. To purchase, please visit our store in Hanuman Junction or call us to reserve your items for pickup." 
     },
     { 
-      q: "Are all medicines genuine?", 
-      a: "Yes. We source only from authorised distributors and store every batch with full traceability to the manufacturer. Cold-chain items are shipped with temperature monitoring." 
+      q: "Where is Sri Srinivasa Medicals located?", 
+      a: "We are located at Hanuman Junction Main Rd, Appanaveedu, Tallamudi, AP 521105 (Eluru Road, Pasuvula Santha, Opp. Boypati Complex)." 
     },
     { 
-      q: "What are your delivery timelines?", 
-      a: "Same-day dispatch in 35+ cities for orders placed before 6pm. Most metro deliveries arrive within 4–6 hours. Other locations are next-day or 2-day." 
+      q: "What are your store timings?", 
+      a: "Our physical store is open every day from 8:00 AM to 10:00 PM." 
     },
     { 
-      q: "Is there a minimum order value?", 
-      a: "No minimum order. Delivery is free above ₹499; otherwise a flat ₹49 fee applies." 
+      q: "How do I know if a medicine is in stock?", 
+      a: "You can search for the medicine on our website to see its availability status. For real-time confirmation or to reserve stock before you arrive, please call us at +91 96669 30275." 
     },
     { 
-      q: "Can I return medicines?", 
-      a: "Unopened, non-temperature-sensitive items can be returned within 7 days. For prescription items, returns are accepted only in case of pharmacist error or damaged packaging." 
+      q: "Are all the medicines and products genuine?", 
+      a: "Absolutely. As a trusted neighbourhood pharmacy, all our medicines and products are 100% genuine and sourced directly from authorised distributors." 
     },
     { 
-      q: "Do you accept insurance?", 
-      a: "We accept reimbursement claims with itemised invoices. Direct insurer settlement is not yet supported." 
+      q: "Do you have a pharmacist available for advice?", 
+      a: "Yes! We have a qualified pharmacist on-site every day who can provide expert advice and guidance regarding your prescriptions and health." 
     },
     { 
-      q: "How do I track my order?", 
-      a: "Use the order ID from your confirmation email on the Track Order page, or check your dashboard if you have an account." 
+      q: "Can I send my prescription online?", 
+      a: "Yes, you can securely upload a photo or PDF of your doctor's prescription through our Upload Rx page. Our pharmacist will review it, and we will contact you to confirm availability for pickup." 
     },
     { 
-      q: "Is my prescription data secure?", 
-      a: "Absolutely. Uploads are encrypted in transit and at rest, and viewed only by licensed pharmacists handling your order." 
+      q: "What else do you sell besides medicines?", 
+      a: "Along with ethical and generic medicines, we stock surgical items, personal care, baby care products, and various fancy store items." 
     }
   ];
 
