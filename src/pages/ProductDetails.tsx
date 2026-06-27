@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Package, CheckCircle, XCircle, Phone, FileText, Tag } from "lucide-react";
+import { ArrowLeft, Package, CheckCircle, XCircle, Phone, MessageCircle, FileText, Tag } from "lucide-react";
 import { productService } from "../services/productService";
 import { getCategoryBySlug } from "../data/products";
 import { ProductImage } from "../components/ProductImage";
@@ -167,9 +167,11 @@ export const ProductDetails: React.FC = () => {
           )}
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="tel:+919666930275"
+            <a href="https://wa.me/919666930275?text=Hello,%20I%20have%20an%20emergency"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 h-11 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors flex-1">
-              <Phone className="h-4 w-4" /> Call to Order: +91 96669 30275
+              <MessageCircle className="h-4 w-4" /> Message us if emergency
             </a>
             <Link to="/prescription"
               className="flex items-center justify-center gap-2 h-11 rounded-xl border text-sm font-semibold hover:bg-muted transition-colors flex-1">

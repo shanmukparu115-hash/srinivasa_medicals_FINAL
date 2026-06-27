@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed": "node seed.js",
-    "sync:remote": "node sync_remote.js"
+    "sync:remote": "node sync_remote.js",
+    "sync:users": "node sync_users.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
