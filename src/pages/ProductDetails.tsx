@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Package, CheckCircle, XCircle, Phone, MessageCircle, FileText, Tag } from "lucide-react";
+import { ArrowLeft, Package, CheckCircle, XCircle, MessageCircle, FileText, Tag } from "lucide-react";
 import { productService } from "../services/productService";
 import { getCategoryBySlug } from "../data/products";
 import { ProductImage } from "../components/ProductImage";

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
+
 
 export const WhatsAppButton: React.FC = () => {
   // The admin's actual WhatsApp number
