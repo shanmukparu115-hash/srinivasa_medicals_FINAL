@@ -21,13 +21,27 @@ export const prescriptionService = {
   async getAll(): Promise<PrescriptionRecord[]> {
     const res = await fetch(`${API_BASE}/api/prescriptions`);
     if (!res.ok) throw new Error("Failed to fetch prescriptions.");
-    return res.json();
+    const records: PrescriptionRecord[] = await res.json();
+    return records.map(r => ({
+      ...r,
+      files: r.files.map(f => ({
+        ...f,
+        dataUrl: f.dataUrl.startsWith('/media/') ? `${API_BASE}${f.dataUrl}` : f.dataUrl
+      }))
+    }));
   },
 
   async getByUserId(userId: string): Promise<PrescriptionRecord[]> {
     const res = await fetch(`${API_BASE}/api/prescriptions/user/${userId}`);
     if (!res.ok) throw new Error("Failed to fetch prescriptions for user.");
-    return res.json();
+    const records: PrescriptionRecord[] = await res.json();
+    return records.map(r => ({
+      ...r,
+      files: r.files.map(f => ({
+        ...f,
+        dataUrl: f.dataUrl.startsWith('/media/') ? `${API_BASE}${f.dataUrl}` : f.dataUrl
+      }))
+    }));
   },
 
   async create(
@@ -65,7 +79,14 @@ export const prescriptionService = {
       throw new Error(err.error || "Failed to submit prescription.");
     }
 
-    return res.json();
+    const record: PrescriptionRecord = await res.json();
+    return {
+      ...record,
+      files: record.files.map(f => ({
+        ...f,
+        dataUrl: f.dataUrl.startsWith('/media/') ? `${API_BASE}${f.dataUrl}` : f.dataUrl
+      }))
+    };
   },
 
   async updateStatus(id: string, status: PrescriptionStatus, adminNotes?: string): Promise<void> {

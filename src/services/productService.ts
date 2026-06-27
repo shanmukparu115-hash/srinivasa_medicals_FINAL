@@ -27,19 +27,26 @@ export const productService = {
 
     const res = await fetch(url.toString());
     if (!res.ok) throw new Error("Failed to search products.");
-    return res.json();
+    const data = await res.json();
+    data.products = data.products.map(p => ({ ...p, imageDataUrl: p.imageDataUrl?.startsWith('/media/') ? `${API_BASE}${p.imageDataUrl}` : p.imageDataUrl }));
+    return data;
   },
 
   async getAll(): Promise<Product[]> {
     const res = await fetch(`${API_BASE}/api/products`);
     if (!res.ok) throw new Error("Failed to fetch products.");
-    return res.json();
+    const products: Product[] = await res.json();
+    return products.map(p => ({ ...p, imageDataUrl: p.imageDataUrl?.startsWith('/media/') ? `${API_BASE}${p.imageDataUrl}` : p.imageDataUrl }));
   },
 
   async getById(id: string): Promise<Product> {
     const res = await fetch(`${API_BASE}/api/products/${id}`);
     if (!res.ok) throw new Error("Product not found.");
-    return res.json();
+    const product: Product = await res.json();
+    if (product.imageDataUrl?.startsWith('/media/')) {
+      product.imageDataUrl = `${API_BASE}${product.imageDataUrl}`;
+    }
+    return product;
   },
 
   async add(data: Omit<Product, "id" | "createdAt" | "updatedAt">): Promise<Product> {
@@ -60,6 +67,9 @@ export const productService = {
     }
 
     const product: Product = await res.json();
+    if (product.imageDataUrl?.startsWith('/media/')) {
+      product.imageDataUrl = `${API_BASE}${product.imageDataUrl}`;
+    }
 
     if (data.imageSourceType === "UPLOAD" && data.imageDataUrl && data.imageDataUrl.startsWith("data:")) {
       try {
@@ -74,7 +84,7 @@ export const productService = {
 
         if (imgRes.ok) {
           const imgData = await imgRes.json();
-          product.imageDataUrl = imgData.imageUrl;
+          product.imageDataUrl = imgData.imageUrl?.startsWith('/media/') ? `${API_BASE}${imgData.imageUrl}` : imgData.imageUrl;
           product.imageSourceType = "UPLOAD";
         }
       } catch (e) {
@@ -104,6 +114,9 @@ export const productService = {
     }
 
     const product: Product = await res.json();
+    if (product.imageDataUrl?.startsWith('/media/')) {
+      product.imageDataUrl = `${API_BASE}${product.imageDataUrl}`;
+    }
 
     if (data.imageSourceType === "UPLOAD" && data.imageDataUrl && data.imageDataUrl.startsWith("data:")) {
       const file = dataURLtoFile(data.imageDataUrl, "product-image.jpg");
@@ -117,7 +130,7 @@ export const productService = {
 
       if (imgRes.ok) {
         const imgData = await imgRes.json();
-        product.imageDataUrl = imgData.imageUrl;
+        product.imageDataUrl = imgData.imageUrl?.startsWith('/media/') ? `${API_BASE}${imgData.imageUrl}` : imgData.imageUrl;
         product.imageSourceType = "UPLOAD";
       }
     } else if (data.imageDataUrl === null) {
