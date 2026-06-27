@@ -28,7 +28,7 @@ export const productService = {
     const res = await fetch(url.toString());
     if (!res.ok) throw new Error("Failed to search products.");
     const data = await res.json();
-    data.products = data.products.map(p => ({ ...p, imageDataUrl: p.imageDataUrl?.startsWith('/media/') ? `${API_BASE}${p.imageDataUrl}` : p.imageDataUrl }));
+    data.products = data.products.map((p: Product) => ({ ...p, imageDataUrl: p.imageDataUrl?.startsWith('/media/') ? `${API_BASE}${p.imageDataUrl}` : p.imageDataUrl }));
     return data;
   },
 
